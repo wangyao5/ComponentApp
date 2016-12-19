@@ -2,7 +2,7 @@ package cn.libery.core;
 
 import android.app.Application;
 import android.net.Uri;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.lzh.nonview.router.Router;
 import com.lzh.nonview.router.exception.NotFoundException;
@@ -23,19 +23,19 @@ public class App extends Application {
 
             @Override
             public void notFound(Uri uri, NotFoundException e) {
-                Toast.makeText(App.this, e.getNotFoundName() + " not find", Toast.LENGTH_SHORT).show();
+                Log.e("App", e.getNotFoundName() + " not find");
             }
 
             @Override
             public void onOpenSuccess(Uri uri, String clzName) {
-                Toast.makeText(App.this, String.format("Launch activity %s success", clzName), Toast.LENGTH_SHORT)
-                        .show();
+                Log.e("App", String.format("Launch activity %s success", clzName));
             }
 
             @Override
             public void onOpenFailed(Uri uri, Exception e) {
-                Toast.makeText(App.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("App", e.getMessage());
             }
         });
+
     }
 }

@@ -43,7 +43,13 @@ dependencies {
 
     compile "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
     apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
-    compile(name: 'good-debug', ext: 'aar')
-    compile(name: 'shop-debug', ext: 'aar')
-    compile(name: 'core-debug', ext: 'aar')
+
+    if (project.ext.isDebug) {
+        compile project(':good')
+        compile project(':shop')
+    } else {
+        compile(name: 'good-debug', ext: 'aar')
+        compile(name: 'shop-debug', ext: 'aar')
+        compile(name: 'core-debug', ext: 'aar')
+    }
 }
