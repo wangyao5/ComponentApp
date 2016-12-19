@@ -1,0 +1,10 @@
+project.ext {
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    minSdkVersion = 16
+    targetSdkVersion = 25
+    supportVersion = "25.1.0"
+    parcelerVersion = "0.5"
+    routerVersion = "0.9"
+    butterknifeVersion = "8.4.0"
+}
