@@ -47,6 +47,7 @@ dependencies {
     if (project.ext.isDebug) {
         compile project(':good')
         compile project(':shop')
+        compile project(':core')
     } else {
         compile(name: 'good-debug', ext: 'aar')
         compile(name: 'shop-debug', ext: 'aar')

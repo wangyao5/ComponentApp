@@ -34,11 +34,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+    provided "com.android.support:appcompat-v7:${project.ext.supportVersion}"
     apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
-    compile "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
-    compile "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
+    provided "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
+    provided "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
     apt "com.github.yjfnypeu.Router:router-compiler:${project.ext.routerVersion}"
-    compile "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
+    provided "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
     apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
 }
