@@ -11,7 +11,6 @@ import com.lzh.nonview.router.Router;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.libery.core.BaseActivity;
-import cn.libery.core.BuildConfig;
 
 public class MainActivity extends BaseActivity {
 
@@ -30,7 +29,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mShowType.setText("assembleDebug :");
+        mShowType.setText("assembleDebug : ");
         mShowType.append(BuildConfig.ASSEMBLE_TYPE);
     }
 

@@ -35,6 +35,7 @@ android {
                 res.srcDirs = ['src/debug/res']
             } else {
                 manifest.srcFile 'src/release/AndroidManifest.xml'
+                res.srcDirs = ['src/main/res']
                 java {
                     exclude 'src/debug/**'
                 }
@@ -81,7 +82,7 @@ dependencies {
         provided "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
         apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
     } else {
-        provided(name: 'core-debug', ext: 'aar')
+        provided(name: 'core-release', ext: 'aar')
         provided "com.android.support:appcompat-v7:${project.ext.supportVersion}"
 
         apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
