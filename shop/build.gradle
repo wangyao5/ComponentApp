@@ -1,6 +1,10 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
 
-apply plugin: 'com.android.library'
+if (project.ext.assembleType.equals("2")) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 apply plugin: 'android-apt'
 apply plugin: 'com.jakewharton.butterknife'
 
@@ -16,6 +20,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resourcePrefix "shop"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,6 +28,19 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            if (project.ext.assembleType.equals("2")) {
+                manifest.srcFile 'src/debug/AndroidManifest.xml'
+                res.srcDirs = ['src/debug/res']
+            } else {
+                manifest.srcFile 'src/release/AndroidManifest.xml'
+                java {
+                    exclude 'src/debug/**'
+                }
+            }
+        }
+    }
 }
 
 repositories {
@@ -37,19 +55,42 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    provided "com.android.support:appcompat-v7:${project.ext.supportVersion}"
 
-    apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
-    provided "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
+    if (project.ext.assembleType.equals("2")) {
+        compile project(':core')
+        compile "com.android.support:appcompat-v7:${project.ext.supportVersion}"
 
-    provided "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
-    apt "com.github.yjfnypeu.Router:router-compiler:${project.ext.routerVersion}"
+        apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
+        compile "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
 
-    provided "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
-    apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
-    if (project.ext.isDebug) {
+        compile "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
+        apt "com.github.yjfnypeu.Router:router-compiler:${project.ext.routerVersion}"
+
+        compile "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
+        apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
+    } else if (project.ext.assembleType.equals("1")) {
         provided project(':core')
+        provided "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+
+        apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
+        provided "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
+
+        provided "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
+        apt "com.github.yjfnypeu.Router:router-compiler:${project.ext.routerVersion}"
+
+        provided "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
+        apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
     } else {
-        compile(name: 'core-debug', ext: 'aar')
+        provided(name: 'core-debug', ext: 'aar')
+        provided "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+
+        apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
+        provided "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
+
+        provided "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
+        apt "com.github.yjfnypeu.Router:router-compiler:${project.ext.routerVersion}"
+
+        provided "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
+        apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
     }
 }

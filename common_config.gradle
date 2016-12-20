@@ -1,5 +1,5 @@
 project.ext {
-    isDebug = true;
+    assembleType = "1";//0线上包 1线下包 2线下分包
     compileSdkVersion = 25
     buildToolsVersion = "25.0.2"
     minSdkVersion = 16
