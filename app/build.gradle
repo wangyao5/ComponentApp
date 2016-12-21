@@ -12,7 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "ASSEMBLE_TYPE", "\"${project.ext.assembleType}\""
+        buildConfigField "String", "ASSEMBLE_TYPE", "\"${project.ext.assembleDebug}\""
     }
     buildTypes {
         release {
@@ -45,13 +45,13 @@ dependencies {
     compile "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
     apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
 
-    if (project.ext.assembleType.equals("0")) {
-        compile(name: 'good-release', ext: 'aar')
-        compile(name: 'shop-release', ext: 'aar')
-        compile(name: 'core-release', ext: 'aar')
-    } else {
+    if (project.ext.assembleDebug) {
         compile project(':good')
         compile project(':shop')
         compile project(':core')
+    } else {
+        compile(name: 'good-release', ext: 'aar')
+        compile(name: 'shop-release', ext: 'aar')
+        compile(name: 'core-release', ext: 'aar')
     }
 }

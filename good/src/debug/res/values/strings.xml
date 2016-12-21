@@ -1,4 +1,0 @@
-<resources>
-    <string name="good_app_name">Good</string>
-    <string name="app_name">@string/good_app_name</string>
-</resources>
