@@ -55,6 +55,7 @@ public class MainActivity extends BaseActivity {
                         .open(this);
                 break;
             case R.id.start_tab:
+                // libery://tab?tabs=fragment1,tabName1,key1:value&fragment2,tabName2,key2:value2,key3:value3
                 Router.create("libery://tab?tabs=" + Fragment1.class.getCanonicalName()
                         + "&tabs=" + Fragment2.class.getCanonicalName() + ",Tab1" + ",name:x1"
                         + "&tabs=" + Fragment1.class.getCanonicalName() + ",Tab2" + ",name:x2"
