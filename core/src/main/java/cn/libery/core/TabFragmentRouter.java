@@ -18,6 +18,8 @@ public class TabFragmentRouter implements RouteCreator {
         Map<String, RouteMap> routes = new HashMap<>();
         routes.put("libery://tab", new RouteMap(TabFragmentActivity.class)
                 .addParam("tabs", RouteMap.STRING_LIST));
+        routes.put("libery://fragment", new RouteMap(FragmentsActivity.class)
+                .addParam("fragment", RouteMap.STRING));
         return routes;
     }
 

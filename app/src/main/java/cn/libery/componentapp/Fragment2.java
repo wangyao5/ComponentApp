@@ -35,7 +35,7 @@ public class Fragment2 extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Bundle args = getArguments();
         if (args != null) {
-            mArg.setText(args.getString("name") + " " + args.getString("text"));
+            mArg.setText(args.getString("title")+" "+args.getString("name") + " " + args.getString("text"));
         }
     }
 }

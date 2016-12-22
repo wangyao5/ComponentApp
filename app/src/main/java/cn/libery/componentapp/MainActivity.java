@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.lzh.nonview.router.Router;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.libery.core.BaseActivity;
 
@@ -26,16 +27,19 @@ public class MainActivity extends BaseActivity {
     public static final int RESULT_CODE = 1000;
     @BindView(R.id.show_type)
     TextView mShowType;
+    @BindView(R.id.start_fragment)
+    TextView mStartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         mShowType.setText("assembleDebug : ");
         mShowType.append(BuildConfig.ASSEMBLE_TYPE);
     }
 
-    @OnClick({R.id.show_good, R.id.show_shop, R.id.start, R.id.start_tab})
+    @OnClick({R.id.show_good, R.id.show_shop, R.id.start, R.id.start_tab, R.id.start_fragment})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.show_good:
@@ -61,7 +65,11 @@ public class MainActivity extends BaseActivity {
                         + "&tabs=" + Fragment1.class.getCanonicalName() + ",Tab2" + ",name:x2"
                         + "&tabs=" + Fragment2.class.getCanonicalName() + ",Tab3" + ",name:x3" + ",text:xx")
                         .open(this);
-
+                break;
+            case R.id.start_fragment:
+                Router.create("libery://fragment?fragment="
+                        + Fragment2.class.getCanonicalName() + ",Tab3" + ",name:x3" + ",text:xx")
+                        .open(this);
                 break;
         }
     }
