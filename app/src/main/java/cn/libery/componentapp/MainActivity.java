@@ -20,6 +20,8 @@ public class MainActivity extends BaseActivity {
     TextView mShowShop;
     @BindView(R.id.start)
     TextView mStart;
+    @BindView(R.id.start_tab)
+    TextView mStartTab;
 
     public static final int RESULT_CODE = 1000;
     @BindView(R.id.show_type)
@@ -33,7 +35,7 @@ public class MainActivity extends BaseActivity {
         mShowType.append(BuildConfig.ASSEMBLE_TYPE);
     }
 
-    @OnClick({R.id.show_good, R.id.show_shop, R.id.start})
+    @OnClick({R.id.show_good, R.id.show_shop, R.id.start, R.id.start_tab})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.show_good:
@@ -51,6 +53,14 @@ public class MainActivity extends BaseActivity {
                         //.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         //.setAnim(R.anim.anim_fade_in, R.anim.anim_fade_out)
                         .open(this);
+                break;
+            case R.id.start_tab:
+                Router.create("libery://tab?tabs=" + Fragment1.class.getCanonicalName()
+                        + "&tabs=" + Fragment2.class.getCanonicalName() + ",Tab1" + ",name:x1"
+                        + "&tabs=" + Fragment1.class.getCanonicalName() + ",Tab2" + ",name:x2"
+                        + "&tabs=" + Fragment2.class.getCanonicalName() + ",Tab3" + ",name:x3" + ",text:xx")
+                        .open(this);
+
                 break;
         }
     }

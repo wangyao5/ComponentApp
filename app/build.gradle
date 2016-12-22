@@ -35,7 +35,7 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:${project.ext.supportVersion}"
-
+    compile "com.android.support:design:${project.ext.supportVersion}"
     apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
     compile "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
 

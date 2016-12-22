@@ -3,6 +3,7 @@ package cn.libery.componentapp;
 import com.lzh.nonview.router.Router;
 
 import cn.libery.core.App;
+import cn.libery.core.TabFragmentRouter;
 import cn.libery.good.GoodRouter;
 import cn.libery.shop.ShopRouter;
 
@@ -17,5 +18,6 @@ public class MyApp extends App {
         super.onCreate();
         Router.addRouteCreator(new GoodRouter());
         Router.addRouteCreator(new ShopRouter());
+        Router.addRouteCreator(new TabFragmentRouter());
     }
 }

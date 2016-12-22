@@ -1,6 +1,7 @@
-apply plugin: 'com.android.library'
 apply from: "${rootProject.rootDir}/common_config.gradle"
+apply plugin: 'com.android.library'
 apply plugin: 'android-apt'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
@@ -19,6 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 repositories {
@@ -34,10 +36,14 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     provided "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+    provided "com.android.support:design:${project.ext.supportVersion}"
     apt "org.lzh.compiler.parceler:parceler-compiler:${project.ext.parcelerVersion}"
     provided "org.lzh.compiler.parceler:parceler-api:${project.ext.parcelerVersion}"
+
     provided "com.github.yjfnypeu.Router:router-api:${project.ext.routerVersion}"
     apt "com.github.yjfnypeu.Router:router-compiler:${project.ext.routerVersion}"
+
     provided "com.jakewharton:butterknife:${project.ext.butterknifeVersion}"
     apt "com.jakewharton:butterknife-compiler:${project.ext.butterknifeVersion}"
+
 }

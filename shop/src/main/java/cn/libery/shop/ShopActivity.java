@@ -7,7 +7,6 @@ import android.widget.TextView;
 import com.lzh.compiler.parceler.annotation.Arg;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.libery.core.BaseActivity;
 
@@ -28,7 +27,6 @@ public class ShopActivity extends BaseActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_activity_shop);
-        ButterKnife.bind(this);
         mShowId.setText(shopId);
         mShowId.append(getLocalClassName());
     }
