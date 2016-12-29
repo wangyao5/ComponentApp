@@ -31,7 +31,7 @@ public class App extends Application {
 
             @Override
             public void onOpenSuccess(Uri uri, String clzName) {
-                Log.e("App", String.format("Launch activity %s success", clzName));
+                Log.e("App", String.format("Launch activity %s success",uri.getPath()+uri.toString()));
             }
 
             @Override

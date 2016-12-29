@@ -29,7 +29,7 @@ public class TabFragmentActivity extends BaseActivity {
     private static final String PLACE_HOLDER = ",";
     private static final String PARAM_HOLDER = ":";
     @Arg
-    ArrayList<String> tabs;
+    String tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,11 @@ public class TabFragmentActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         if (tabs == null) return;
-        for (int i = 0; i < tabs.size(); i++) {
-            createFragment(tabs.get(i), adapter);
+        String[] tabAll = tabs.split(";");
+        Log.e("Tabs", tabs);
+        for (final String aTabAll : tabAll) {
+            Log.e("Tab", aTabAll);
+            createFragment(aTabAll, adapter);
         }
         viewPager.setAdapter(adapter);
     }
