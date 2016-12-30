@@ -31,7 +31,7 @@ public class App extends Application {
 
             @Override
             public void onOpenSuccess(Uri uri, String clzName) {
-                Log.e("App", String.format("Launch activity %s success",uri.getPath()+uri.toString()));
+                Log.e("App", String.format("Launch activity %s success", clzName));
             }
 
             @Override
@@ -43,6 +43,7 @@ public class App extends Application {
         Router.setGlobalRouteInterceptor(new RouteInterceptor() {
             @Override
             public boolean intercept(final Uri uri, final ActivityRouteBundleExtras extras, final Context context) {
+                Log.e("Host", uri.getHost());//根据host校验登录
                 return false;
             }
 
